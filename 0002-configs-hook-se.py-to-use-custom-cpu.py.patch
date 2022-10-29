@@ -1,0 +1,45 @@
+From 766699e1790051a488cab60b6047bf265a77d0bd Mon Sep 17 00:00:00 2001
+From: Gedare Bloom <gedare@rtems.org>
+Date: Thu, 18 Nov 2021 09:56:35 -0700
+Subject: [PATCH] configs: hook se.py to use custom cpu.py
+
+Change-Id: I2895f8897919a72be50b97b9817b6905356ca518
+---
+ configs/example/se.py | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/configs/example/se.py b/configs/example/se.py
+index 7b161e120..6462f81d5 100644
+--- a/configs/example/se.py
++++ b/configs/example/se.py
+@@ -64,6 +64,8 @@ from common.FileSystemConfig import config_filesystem
+ from common.Caches import *
+ from common.cpu2000 import *
+ 
++from cpu import MyMinorCPU
++
+ def get_processes(args):
+     """Interprets provided args and returns a list of processes"""
+ 
+@@ -118,6 +120,8 @@ def get_processes(args):
+ parser = argparse.ArgumentParser()
+ Options.addCommonOptions(parser)
+ Options.addSEOptions(parser)
++parser.add_option("--fpu_operation_latency", type="int", default=6)
++parser.add_option("--fpu_issue_latency", type="int", default=1)
+ 
+ if '--ruby' in sys.argv:
+     Ruby.define_options(parser)
+@@ -163,7 +167,8 @@ if args.smt and args.num_cpus > 1:
+ 
+ np = args.num_cpus
+ mp0_path = multiprocesses[0].executable
+-system = System(cpu = [CPUClass(cpu_id=i) for i in range(np)],
++#system = System(cpu = [CPUClass(cpu_id=i) for i in range(np)],
++system = System(cpu = MyMinorCPU(options),
+                 mem_mode = test_mem_mode,
+                 mem_ranges = [AddrRange(args.mem_size)],
+                 cache_line_size = args.cacheline_size)
+-- 
+2.25.1
+
