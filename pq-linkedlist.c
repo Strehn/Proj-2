@@ -12,6 +12,13 @@
     const int n = 1000;
     double *v = malloc(sizeof(double)*n);
     pq *mypq;
+
+    // create stack to hold the linked list 
+    struct Node *head = (struct Node*) malloc(sizeof(struct Node));
+    head->num = 2;
+    head->Previous = NULL;
+    head->Next = NULL;
+
     /* init */
     srand(time(NULL));
     mypq = pq_create();
