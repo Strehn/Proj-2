@@ -6,29 +6,18 @@
 #include <time.h>
 #include “pq.h”
 
- int main(int argc, char *argv[])
- {
-    int i;
-    const int n = 1000;
-    double *v = malloc(sizeof(double)*n);
-    pq *mypq;
 
-    // create stack to hold the heap
-    struct Node *head = (struct Node*) malloc(sizeof(struct Node));
-    head->num = 2;
-    head->Previous = NULL;
-    head->Next = NULL;
+/* Allocates and initializes a new pq */
+pq* pq_create();
 
-    /* init */
-    srand(time(NULL));
-    mypq = pq_create();
-    for (i = 0; i < n; i++) v[i] = drand48();
-    /* begin sort */
-    for (i = 0; i < n; i++) pq_push(mypq, v[i], (void*)v[i]);
-    for (i = 0; i < n; i++) v[i] = pq_pop(mypq);
-    /* end sort */
+/* Adds value to pq based on numerical order of key */
+void pq_push(pq *head, double key, void *value);
 
-    for (i = 0; i < n; i++) printf(“%g\n”, v[i]);
-    free(v);
-    return 0;
- }
+/* Returns value from pq having the minimum key */
+void* pq_pop(pq *head);
+
+/* Deallocates (frees) pq. Shallow destruction,
+meaning nodes in the pq are not recursively freed. */
+void pq_destroy();
+
+

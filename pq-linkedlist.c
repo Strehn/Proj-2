@@ -6,29 +6,76 @@
 #include <time.h>
 #include “pq.h”
 
- int main(int argc, char *argv[])
- {
-    int i;
-    const int n = 1000;
-    double *v = malloc(sizeof(double)*n);
-    pq *mypq;
+/* Allocates and initializes a new pq */
+pq* pq_create();
 
-    // create stack to hold the linked list 
-    struct Node *head = (struct Node*) malloc(sizeof(struct Node));
-    head->num = 2;
-    head->Previous = NULL;
-    head->Next = NULL;
+/* Adds value to pq based on numerical order of key */
+// Change this to implement insertion sort
+void pq_push(pq *head, double key, void *value){
+    pq* temp = head;
+    double s_num = key; // number to look for
+    int last = 0;
 
-    /* init */
-    srand(time(NULL));
-    mypq = pq_create();
-    for (i = 0; i < n; i++) v[i] = drand48();
-    /* begin sort */
-    for (i = 0; i < n; i++) pq_push(mypq, v[i], (void*)v[i]);
-    for (i = 0; i < n; i++) v[i] = pq_pop(mypq);
-    /* end sort */
+    // insertion sort
+    // step through list and add num
+    while(temp->num <= s_num){ // as soon as temp->num > num stop
+        if(temp->num == s_num){
+            return; // do nothing
+        }
+        if(temp->Next == NULL){ // last node in list
+            last = 1;
+            break;
+        }
+        temp = temp->Next;
+    }
 
-    for (i = 0; i < n; i++) printf(“%g\n”, v[i]);
-    free(v);
-    return 0;
- }
+    // insert the node
+    pq *node = (struct Node*) malloc(sizeof(struct Node));
+    node->num = value;
+    if(last = 1){ // add to end of list
+        node->Next = NULL;
+        node->Previous = temp;
+        temp->Next = node;
+    }
+    else{
+        // inset between two nodes
+        node->Next = temp->Next;
+        node->Previous = temp;
+        temp->Next = node;
+    }
+}
+
+/* Returns value from pq having the minimum key */
+void* pq_pop(pq *head)
+{
+    if(head == NULL){
+        // do nothing
+        return;
+    }
+    // temp nodes to step through list and remove num
+    s* temp = head;
+    struct Node* previous = NULL;
+    // step through LL
+    while(temp->num != num){
+        // no match
+        if(temp->Next == NULL){
+            return;
+        }
+        else{
+            previous = temp;
+            temp = temp->Next;
+        }
+    }
+    // first node in list so head becomes next
+    if(temp == head){
+        head = head->Next;
+    }
+    else{
+        previous->Next = temp->Next;
+        // remove current node
+    }
+}
+
+/* Deallocates (frees) pq. Shallow destruction,
+meaning nodes in the pq are not recursively freed. */
+void pq_destroy();
