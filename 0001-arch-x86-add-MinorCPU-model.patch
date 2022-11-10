@@ -1,0 +1,48 @@
+From 97d42ea69326a3a3c2a1652850c523cfc5b47fe5 Mon Sep 17 00:00:00 2001
+From: Gedare Bloom <gedare@rtems.org>
+Date: Wed, 2 Nov 2022 08:52:21 -0600
+Subject: [PATCH 1/2] arch-x86: add MinorCPU model
+
+Change-Id: Ie9806a4f2d8e9be57cbd04f86f45b42641319dcc
+---
+ src/arch/x86/SConscript | 1 +
+ src/arch/x86/X86CPU.py  | 4 ++++
+ 2 files changed, 5 insertions(+)
+
+diff --git a/src/arch/x86/SConscript b/src/arch/x86/SConscript
+index 9eeefd76f4..738f6b71e6 100644
+--- a/src/arch/x86/SConscript
++++ b/src/arch/x86/SConscript
+@@ -77,6 +77,7 @@ SimObject('X86CPU.py', sim_objects=[], tags='x86 isa')
+ SimObject('AtomicSimpleCPU.py', sim_objects=[], tags='x86 isa')
+ SimObject('TimingSimpleCPU.py', sim_objects=[], tags='x86 isa')
+ SimObject('NonCachingSimpleCPU.py', sim_objects=[], tags='x86 isa')
++SimObject('MinorCPU.py', sim_objects=[], tags='x86 isa')
+ SimObject('O3CPU.py', sim_objects=[], tags='x86 isa')
+ 
+ DebugFlag('LocalApic', "Local APIC debugging", tags='x86 isa')
+diff --git a/src/arch/x86/X86CPU.py b/src/arch/x86/X86CPU.py
+index 0b46c94c6e..9b3faa2c39 100644
+--- a/src/arch/x86/X86CPU.py
++++ b/src/arch/x86/X86CPU.py
+@@ -28,6 +28,7 @@ from m5.proxy import Self
+ from m5.objects.BaseAtomicSimpleCPU import BaseAtomicSimpleCPU
+ from m5.objects.BaseNonCachingSimpleCPU import BaseNonCachingSimpleCPU
+ from m5.objects.BaseTimingSimpleCPU import BaseTimingSimpleCPU
++from m5.objects.BaseMinorCPU import BaseMinorCPU
+ from m5.objects.BaseO3CPU import BaseO3CPU
+ from m5.objects.X86Decoder import X86Decoder
+ from m5.objects.X86MMU import X86MMU
+@@ -49,6 +50,9 @@ class X86NonCachingSimpleCPU(BaseNonCachingSimpleCPU, X86CPU):
+ class X86TimingSimpleCPU(BaseTimingSimpleCPU, X86CPU):
+     mmu = X86MMU()
+ 
++class X86MinorCPU(BaseMinorCPU, X86CPU):
++    mmu = X86MMU()
++
+ class X86O3CPU(BaseO3CPU, X86CPU):
+     mmu = X86MMU()
+     needsTSO = True
+-- 
+2.34.1
+

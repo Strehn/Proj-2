@@ -1,0 +1,42 @@
+From e713140ecedb29f07e6a75e8b94b0369501123c3 Mon Sep 17 00:00:00 2001
+From: Gedare Bloom <gedare@rtems.org>
+Date: Wed, 2 Nov 2022 17:33:40 -0600
+Subject: [PATCH 2/2] configs: add fpu op and issue latency args to se.py for
+ minorCPU
+
+Change-Id: Iaccc8879ef9a62ad4d1121b3cbe1889492e85c76
+---
+ configs/example/se.py | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/configs/example/se.py b/configs/example/se.py
+index 3a8203da2e..0862977d13 100644
+--- a/configs/example/se.py
++++ b/configs/example/se.py
+@@ -120,6 +120,9 @@ parser = argparse.ArgumentParser()
+ Options.addCommonOptions(parser)
+ Options.addSEOptions(parser)
+ 
++parser.add_argument("--fpu_operation_latency", type=int, default=6)
++parser.add_argument("--fpu_issue_latency", type=int, default=1)
++
+ if '--ruby' in sys.argv:
+     Ruby.define_options(parser)
+ 
+@@ -169,6 +172,13 @@ system = System(cpu = [CPUClass(cpu_id=i) for i in range(np)],
+                 mem_ranges = [AddrRange(args.mem_size)],
+                 cache_line_size = args.cacheline_size)
+ 
++# following only works for Minor CPU. This breaks the script for other CPUs
++for cpu in system.cpu:
++    if args.fpu_operation_latency:
++        cpu.executeFuncUnits.funcUnits[4].opLat = args.fpu_operation_latency
++    if args.fpu_issue_latency:
++        cpu.executeFuncUnits.funcUnits[4].issueLat = args.fpu_issue_latency
++
+ if numThreads > 1:
+     system.multi_thread = True
+ 
+-- 
+2.34.1
+
