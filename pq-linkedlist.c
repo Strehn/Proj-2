@@ -1,81 +1,54 @@
 // noah rodgers, sydney petrehn, and james turne
-// code using linked list and insertion sort
+// code using a doubly linked list and insertion sort
 
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
 #include “pq.h”
 
-/* Allocates and initializes a new pq */
-pq* pq_create();
+// function declaration
+void InsertionSort(pq *head);
+void sInsert(pq** head, pq* newNode);
 
-/* Adds value to pq based on numerical order of key */
-// Change this to implement insertion sort
-void pq_push(pq *head, double key, void *value){
-    pq* temp = head;
-    double s_num = key; // number to look for
-    int last = 0;
-
-    // insertion sort
-    // step through list and add num
-    while(temp->num <= s_num){ // as soon as temp->num > num stop
-        if(temp->num == s_num){
-            return; // do nothing
-        }
-        if(temp->Next == NULL){ // last node in list
-            last = 1;
-            break;
-        }
-        temp = temp->Next;
+// doubly linked list sorted using insertion sort
+// inserts every node into a new sorted list (sl)
+void InsertionSort(pq *head){
+    pq *sl = pq_create();
+    pq *current = pq_create();
+    current = *head;
+    pq *next = pq_create();
+    // go through list and insert each into a new sorted list
+    while (current != NULL) {
+        next = current->next;
+        current->prev = current->next = NULL;
+        sInsert(&sl, current); // put node in sorted list
+        current = next;
     }
-
-    // insert the node
-    pq *node = (struct Node*) malloc(sizeof(struct Node));
-    node->num = value;
-    if(last = 1){ // add to end of list
-        node->Next = NULL;
-        node->Previous = temp;
-        temp->Next = node;
-    }
-    else{
-        // inset between two nodes
-        node->Next = temp->Next;
-        node->Previous = temp;
-        temp->Next = node;
-    }
+    *head = sl; // new head pointer points to head of sl
 }
 
-/* Returns value from pq having the minimum key */
-void* pq_pop(pq *head)
-{
-    if(head == NULL){
-        // do nothing
-        return;
+void sInsert(pq** head, pq* newNode){
+    pq *current = pq_create();
+    // if list null head becomes node to be sorted
+    if (*head == NULL){
+        *head = newNode;
     }
-    // temp nodes to step through list and remove num
-    s* temp = head;
-    struct Node* previous = NULL;
-    // step through LL
-    while(temp->num != num){
-        // no match
-        if(temp->Next == NULL){
-            return;
-        }
-        else{
-            previous = temp;
-            temp = temp->Next;
-        }
+    else if ((*head)->data >= newNode->data) { // if the newNode's is first
+        newNode->next = *head;
+        newNode->next->prev = newNode;
+        *head = newNode;
     }
-    // first node in list so head becomes next
-    if(temp == head){
-        head = head->Next;
-    }
-    else{
-        previous->Next = temp->Next;
-        // remove current node
+    else { // find where to insert new node
+        current = *head;
+        while (current->next != NULL && 
+              current->next->data < newNode->data)
+            current = current->next;
+        // insert node here
+        newNode->next = current->next;
+        // if at end of list next = null 
+        if (current->next != NULL)
+            newNode->next->prev = newNode;
+        current->next = newNode;
+        newNode->prev = current;
     }
 }
-
-/* Deallocates (frees) pq. Shallow destruction,
-meaning nodes in the pq are not recursively freed. */
-void pq_destroy();
