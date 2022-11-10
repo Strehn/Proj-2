@@ -1,4 +1,4 @@
-// noah rodgers, sydney petrehn, and james turne
+// noah rodgers, sydney petrehn, and james turner
 // code using a doubly linked list and insertion sort
 
 #include <stdlib.h>
