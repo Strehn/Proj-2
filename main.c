@@ -3,6 +3,9 @@
 #include <time.h>
 
 #include "pq.h"
+#include "pq-null.c"
+#include "pq-linkedlist.c"
+#include "pq-miniheap.c"
 
 int main(int argc, char *argv[])
 {

@@ -4,10 +4,6 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-#include 'pq-linkedlist.c'
-#include 'pq-miniheap.c'
-
-
 struct pq {
     int num;
     struct Node* Previous;
