@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <time.h>
 
-#include "pq.h"
+//#include "pq.h"
 #include "pq-null.c"
 
 int main(int argc, char *argv[])

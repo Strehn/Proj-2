@@ -2,9 +2,11 @@
 
 #include <stdlib.h>
 
+/*
 struct pq {
   void *ptr;
 };
+*/
 
 /* Allocates and initializes a new pq */
 pq* pq_create()
