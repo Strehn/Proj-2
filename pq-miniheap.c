@@ -35,7 +35,7 @@ int rightc(int i){
     return (2*i + 2);
 }
 
-Mheap* insertHeap(Mheap *heap, int num){
+void insertHeap(Mheap *heap, int num){
     heap->arr[heap->size - 1] = num;
     int current = heap->size - 1;
     int temp = 0;
@@ -46,9 +46,7 @@ Mheap* insertHeap(Mheap *heap, int num){
         heap->arr[current] = temp;
         current = parent(current);
     }
-    return heap;
 }
-
 
 int main(int argc, char *argv[])
 {
@@ -56,7 +54,8 @@ int main(int argc, char *argv[])
   const int n = 1000;
   double *v = malloc(sizeof(double)*n);
   double **p = malloc(sizeof(double*)*n);
-  Mheap *mypq;
+  pq *mypq;
+  Mheap *heap;
 
   /* init */
   srand48(time(NULL));
@@ -67,8 +66,11 @@ int main(int argc, char *argv[])
   }
 
   /* begin sort */
-  for (i = 0; i < n; i++) pq_push(mypq, v[i], (void*)p[i]);
-  
+  for (i = 0; i < n; i++) {
+    pq_push(mypq, v[i], (void*)p[i]);
+    insertHeap(heap, i);
+  }
+   
   // insert miniheap conversion here
 
   /* end sort */
