@@ -4,7 +4,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
+
 #include “pq.h”
+#include "pq-null.c"
 
 //min heap
 struct Mheap{
