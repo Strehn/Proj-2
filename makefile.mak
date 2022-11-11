@@ -1,4 +1,4 @@
-# Simple makefile for compiling a the programs  
+# Simple makefile for compiling the programs  
 
 .KEEP_STATE
 
