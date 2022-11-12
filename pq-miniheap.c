@@ -1,32 +1,30 @@
 // noah rodgers, sydney petrehn, and james turner
-// code implementing a mini heap
+// code implementing a min-heap
+// removed #include pq-null and main function
 
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
-
-#include “pq.h”
-#include "pq-null.c"
+#include "pq.h"
 
 //min heap
 struct Mheap{
     int *arr; // array to hold the binary tree
-    int size;
+    int size; // array size
 }
 
 /*       root   <- minimum num
    parent    parent
  node node  node node <- largest num\
-
 represented as an array
 [min/root   parent parent node node node node]
-
 root     = arr [0]
 current  = arr[i]
 parent   = arr[(i-1)/2]
 left c   = arr[(2*i)+1]
 right c  = arr[(2*i)+2]
 */
+
 int parent(int i){
     return (i-1)/2;
 }
@@ -43,43 +41,4 @@ void insertHeap(Mheap *heap, int num){
         current = parent(current);
     }
 }
-
-int main(int argc, char *argv[])
-{
-  int i;
-  const int n = 1000;
-  double *v = malloc(sizeof(double)*n);
-  double **p = malloc(sizeof(double*)*n);
-  struct pq *mypq;
-  struct Mheap *heap;
-
-  /* init */
-  srand48(time(NULL));
-  mypq = pq_create();
-  for (i = 0; i < n; i++) {
-    v[i] = drand48();
-    p[i] = &v[i];
-  }
-
-  /* begin sort */
-  for (i = 0; i < n; i++) {
-    pq_push(mypq, v[i], (void*)p[i]);
-    insertHeap(heap, i);
-  }
-   
-  // insert miniheap conversion here
-
-  /* end sort */
-
-  for (i = 0; i < n; i++) {
-    if (p[i]) printf("%g\n", *p[i]);
-  }
-
-  pq_destroy(mypq);
-
-  free(v);
-  free(p);
-  return 0;
-}
-
 
