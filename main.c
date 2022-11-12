@@ -1,6 +1,3 @@
-//edited to remain as project 2 described - apparently no changes are needed to this file
-//i still have copies of last edits in case we need to revert
-
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
@@ -11,7 +8,6 @@ int main(int argc, char *argv[])
   int i;
   const int n = 1000;
   double *v = malloc(sizeof(double)*n);
-  double **p = malloc(sizeof(double*)*n);
   struct pq *mypq;
 
   /* init */
@@ -27,7 +23,7 @@ int main(int argc, char *argv[])
   /* end sort */
 
   for (i = 0; i < n; i++) {
-    if (p[i]) printf("%g\n", v[i]);
+    printf("%g\n", v[i]);
   }
 
   free(v);
