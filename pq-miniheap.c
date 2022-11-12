@@ -1,6 +1,5 @@
 // noah rodgers, sydney petrehn, and james turner
 // code implementing a min-heap
-// removed #include pq-null and main function
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -41,4 +40,3 @@ void insertHeap(Mheap *heap, int num){
         current = parent(current);
     }
 }
-
