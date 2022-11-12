@@ -10,10 +10,8 @@ struct pq {
     struct Node* Next;
 };
 
-//typedef struct pq pq;
-
 /* Allocates and initializes a new pq */
-pq* pq_create();
+struct pq* pq_create();  //tried this with and with out "struct" -- didn't like either - main problem is it doesn't recognize the pq type across files
 
 /* Adds value to pq based on numerical order of key */
 void pq_push(pq *head, double key, void *value);
