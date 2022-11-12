@@ -1,6 +1,5 @@
 // noah rodgers, sydney petrehn, and james turner
 // code using a doubly linked list and insertion sort
-// removed main function and include of pq-null
 
 #include <stdlib.h>
 #include <stdio.h>
