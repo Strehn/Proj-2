@@ -4,22 +4,21 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-struct pq {
+/*struct pq {
     int num;
     struct Node* Previous;
     struct Node* Next;
-};
+};*/
 
 /* Allocates and initializes a new pq */
-struct pq* pq_create();  //tried this with and with out "struct" -- didn't like either - main problem is it doesn't recognize the pq type across files
+struct pq* pq_create();
 
 /* Adds value to pq based on numerical order of key */
-void pq_push(pq *head, double key, void *value);
+void pq_push(struct pq *head, double key, void *value);
 
 /* Returns value from pq having the minimum key */
-void* pq_pop(pq *head);
+void* pq_pop(struct pq *head);
 
 /* Deallocates (frees) pq. Shallow destruction,
 meaning nodes in the pq are not recursively freed. */
 void pq_destroy();
-
