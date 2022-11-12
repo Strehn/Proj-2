@@ -30,12 +30,6 @@ right c  = arr[(2*i)+2]
 int parent(int i){
     return (i-1)/2;
 }
-int leftc(int i){
-    return (2*i + 1);
-}
-int rightc(int i){
-    return (2*i + 2);
-}
 
 void insertHeap(Mheap *heap, int num){
     heap->arr[heap->size - 1] = num;
@@ -56,8 +50,8 @@ int main(int argc, char *argv[])
   const int n = 1000;
   double *v = malloc(sizeof(double)*n);
   double **p = malloc(sizeof(double*)*n);
-  pq *mypq;
-  Mheap *heap;
+  struct pq *mypq;
+  struct Mheap *heap;
 
   /* init */
   srand48(time(NULL));

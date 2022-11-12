@@ -15,10 +15,10 @@ void sInsert(pq** head, pq* newNode);
 // doubly linked list sorted using insertion sort
 // inserts every node into a new sorted list (sl)
 void InsertionSort(pq *head){
-    pq *sl = pq_create();
-    pq *current = pq_create();
+    struct pq *sl = pq_create();
+    struct pq *current = pq_create();
     current = *head;
-    pq *next = pq_create();
+    struct pq *next = pq_create();
     // go through list and insert each into a new sorted list
     while (current != NULL) {
         next = current->next;
@@ -30,7 +30,7 @@ void InsertionSort(pq *head){
 }
 
 void sInsert(pq** head, pq* newNode){// head = sl, new = current
-    pq *current = pq_create();
+    struct pq *current = pq_create();
     // if list null head becomes node to be sorted
     if (*head == NULL){
         *head = newNode;
@@ -61,7 +61,7 @@ int main(int argc, char *argv[])
   const int n = 1000;
   double *v = malloc(sizeof(double)*n);
   double **p = malloc(sizeof(double*)*n);
-  pq *mypq;
+  struct pq *mypq;
 
   /* init */
   srand48(time(NULL));

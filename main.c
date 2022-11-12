@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <time.h>
 
-//#include "pq.h"
+#include "pq.h"
 #include "pq-null.c"
 
 int main(int argc, char *argv[])
@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
   const int n = 1000;
   double *v = malloc(sizeof(double)*n);
   double **p = malloc(sizeof(double*)*n);
-  pq *mypq;
+  struct pq * mypq;
 
   /* init */
   srand48(time(NULL));
