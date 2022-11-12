@@ -10,7 +10,7 @@ struct pq {
     struct Node* Next;
 };
 
-typedef struct pq pq;
+//typedef struct pq pq;
 
 /* Allocates and initializes a new pq */
 pq* pq_create();
