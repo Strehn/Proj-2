@@ -1,9 +1,10 @@
+//edited to remain as project 2 described - apparently no changes are needed to this file
+//i still have copies of last edits in case we need to revert
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
-
 #include "pq.h"
-#include "pq-null.c"
 
 int main(int argc, char *argv[])
 {
@@ -11,28 +12,24 @@ int main(int argc, char *argv[])
   const int n = 1000;
   double *v = malloc(sizeof(double)*n);
   double **p = malloc(sizeof(double*)*n);
-  struct pq * mypq;
+  struct pq *mypq;
 
   /* init */
-  srand48(time(NULL));
+  srand(time(NULL));
   mypq = pq_create();
   for (i = 0; i < n; i++) {
     v[i] = drand48();
-    p[i] = &v[i];
   }
 
   /* begin sort */
-  for (i = 0; i < n; i++) pq_push(mypq, v[i], (void*)p[i]);
-  for (i = 0; i < n; i++) p[i] = pq_pop(mypq);
+  for (i = 0; i < n; i++) pq_push(mypq, v[i], (void*)v[i]);
+  for (i = 0; i < n; i++) v[i] = pq_pop(mypq);
   /* end sort */
 
   for (i = 0; i < n; i++) {
-    if (p[i]) printf("%g\n", *p[i]);
+    if (p[i]) printf("%g\n", v[i]);
   }
 
-  pq_destroy(mypq);
-
   free(v);
-  free(p);
   return 0;
 }
