@@ -19,7 +19,7 @@ struct pq* pq_create();
 void pq_push(struct pq *head, double key, void *value);
 
 /* Returns value from pq having the minimum key */
-void* pq_pop(struct pq *head);
+double pq_pop(struct pq *head);
 
 /* Deallocates (frees) pq. Shallow destruction,
 meaning nodes in the pq are not recursively freed. */
