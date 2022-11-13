@@ -37,6 +37,21 @@ void pq_destroy(pq *head)
   free(head);
 }
 
+void PrintLL(pq *head){
+    struct pq * temp;
+    if(head == NULL){
+        printf(" Empty List.");
+    }
+    else {
+        temp = head;
+        printf("\n Data in list :\n");
+        while(temp != NULL){
+            printf("%d ", temp->num);
+            temp = temp->Next; // move to next node down list
+        }
+    }
+}
+
 // doubly linked list sorted using insertion sort
 // inserts every node into a new sorted list (sl)
 // ----- This function can be deleted we didnt end up using it -----
