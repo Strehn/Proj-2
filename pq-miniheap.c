@@ -10,7 +10,7 @@
 struct Mheap{
     int *arr; // array to hold the binary tree
     int size;
-}
+};
 
 /*       root   <- minimum num
    parent    parent

@@ -70,7 +70,7 @@ void InsertionSort(pq *head){
     *head = sl; // new head pointer points to head of sl
 }
 
-void sInsert(pq** head, pq* newNode){// head = sl, new = current
+void sInsert(pq* head, pq* newNode){// head = sl, new = current
     pq *current = pq_create();
     // if list null head becomes node to be sorted
     if (*head == NULL){
