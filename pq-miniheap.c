@@ -39,7 +39,7 @@ void insertHeap(Mheap *heap, int num){
     heap->arr[heap->size - 1] = num;
     int current = heap->size - 1;
     int temp = 0;
-    if(size > 1)
+    if(heap->size > 1)
     {
       while(current > 0 && heap->arr[parent(current)] > heap->arr[current]){
         temp = heap->arr[parent(current)];
