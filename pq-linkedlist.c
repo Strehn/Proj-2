@@ -62,8 +62,8 @@ void InsertionSort(pq *head){
     pq *next = pq_create();
     // go through list and insert each into a new sorted list
     while (current != NULL) {
-        next = current->next;
-        current->prev = current->next = NULL;
+        next = current->Next;
+        current->prev = current->Next = NULL;
         sInsert(&sl, current); // put node in sorted list
         current = next;
     }
@@ -77,21 +77,21 @@ void sInsert(pq** head, pq* newNode){// head = sl, new = current
         *head = newNode;
     }
     else if ((*head)->num >= newNode->num) { // if the newNode's is first
-        newNode->next = *head;
-        newNode->next->prev = newNode;
+        newNode->Next = *head;
+        newNode->Next->prev = newNode;
         *head = newNode;
     }
     else { // find where to insert new node
         current = *head;
-        while (current->next != NULL && 
-              current->next->num < newNode->num)
-            current = current->next;
+        while (current->Next != NULL && 
+              current->Next->num < newNode->num)
+            current = current->Next;
         // insert node here
-        newNode->next = current->next;
+        newNode->Next = current->Next;
         // if at end of list next = null 
-        if (current->next != NULL)
-            newNode->next->prev = newNode;
-        current->next = newNode;
+        if (current->Next != NULL)
+            newNode->Next->prev = newNode;
+        current->Next = newNode;
         newNode->prev = current;
     }
 }
