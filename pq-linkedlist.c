@@ -17,7 +17,7 @@ pq* pq_create()
 }
 
 /* Adds value to pq based on numerical order of key */
-void pq_push(pq *head, double key, pq *value)
+void pq_push(pq *head, double key, int *value)
 {
   if (head && !(head->ptr)) head->ptr = value;
 }

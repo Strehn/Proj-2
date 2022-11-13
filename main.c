@@ -46,6 +46,7 @@ int main(int argc, char *argv[])
     }
     else{ //base /  ----- given main.c sort -----
       /* begin sort */
+      /*
       for (i = 0; i < n; i++){
         pq_push(mypq, v[i], v[i]);
       } 
@@ -57,6 +58,7 @@ int main(int argc, char *argv[])
       }
       free(v);
       /* end sort */
+      
     }
     return 0;
 }
