@@ -4,11 +4,11 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-/*struct pq {
+struct pq {
     int num;
     struct Node* Previous;
     struct Node* Next;
-};*/
+};
 
 /* Allocates and initializes a new pq */
 struct pq* pq_create();
