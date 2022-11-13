@@ -17,7 +17,7 @@ pq* pq_create()
 }
 
 /* Adds value to pq based on numerical order of key */
-void pq_push(pq *head, double key, int *value)
+void pq_push(pq *head, double key, void *value)
 {
   //if (head && !(head->ptr)) head->ptr = value;
 }
@@ -65,10 +65,10 @@ void InsertionSort(pq *head){
     while (current != NULL) {
         next = current->Next;
         current->Previous = current->Next = NULL;
-        sInsert(&sl, current); // put node in sorted list
+        sInsert(sl, current); // put node in sorted list
         current = next;
     }
-    *head = sl; // new head pointer points to head of sl
+    head = sl; // new head pointer points to head of sl
 }
 
 void sInsert(pq* head, pq* newNode){// head = sl, new = current
@@ -77,7 +77,7 @@ void sInsert(pq* head, pq* newNode){// head = sl, new = current
     if (head == NULL){
         head = newNode;
     }
-    else if ((*head)->num >= newNode->num) { // if the newNode's is first
+    else if ((head)->num >= newNode->num) { // if the newNode's is first
         newNode->Next = *head;
         newNode->Next->Previous = newNode;
         head = newNode;
