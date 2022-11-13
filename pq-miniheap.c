@@ -35,19 +35,21 @@ Mheap* heap_create()
   return (Mheap*)malloc(sizeof(Mheap));
 }
 
+void swap(int *a, int *b){
+  int temp = *a;
+  *a = *b;
+  *b = temp;
+}
+
 void insertHeap(Mheap *heap, int num){
-    heap->arr[heap->size - 1] = num;
-    int current = heap->size - 1;
-    int temp = 0;
-    if(heap->size > 1)
-    {
-      while(current > 0 && heap->arr[parent(current)] > heap->arr[current]){
-        temp = heap->arr[parent(current)];
-        heap->arr[parent(current)] = heap->arr[current];
-        heap->arr[current] = temp;
-        current = parent(current);
-      }
+    int i = heap->size - 1;
+    heap->arr[i] = num;
+
+    while( i != 0 && heap->arr[parent(i)] > heap->arr[i]){
+      swap(&heap->arr[i], &heap->arr[parent(i)]);
+      i = parent(i);
     }
+    heap->size++;
 }
 
 void PrintHeap(Mheap *heap){
