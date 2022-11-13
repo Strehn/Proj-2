@@ -8,7 +8,7 @@
 
 // function declaration
 void InsertionSort(pq *head);
-void sInsert(pq** head, pq* newNode);
+void sInsert(pq* head, pq* newNode);
 
 /* Allocates and initializes a new pq */
 pq* pq_create()
@@ -19,15 +19,16 @@ pq* pq_create()
 /* Adds value to pq based on numerical order of key */
 void pq_push(pq *head, double key, int *value)
 {
-  if (head && !(head->ptr)) head->ptr = value;
+  //if (head && !(head->ptr)) head->ptr = value;
 }
 
 /* Returns value from pq having the minimum key */
 double pq_pop(pq *head)
 {
-  void *p = head->ptr;
-  head->ptr = NULL;
-  return p->num;
+  //void *p = head->ptr;
+  //head->ptr = NULL;
+  //return p->num;
+  return 1;
 }
 
 /* Deallocates (frees) pq. Shallow destruction,
