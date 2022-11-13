@@ -6,8 +6,8 @@
 
 struct pq {
     int num;
-    struct Node* Previous;
-    struct Node* Next;
+    pq* Previous;
+    pq* Next;
 };
 
 typedef struct pq pq;
