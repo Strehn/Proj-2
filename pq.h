@@ -16,7 +16,7 @@ typedef struct pq pq;
 struct pq* pq_create();
 
 /* Adds value to pq based on numerical order of key */
-void pq_push(struct pq *head, double key, void *value);
+void pq_push(struct pq *head, double key, pq *value);
 
 /* Returns value from pq having the minimum key */
 double pq_pop(struct pq *head);
