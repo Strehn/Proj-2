@@ -38,6 +38,7 @@ int main(int argc, char *argv[])
       PrintLL(mypq); // print the data in the list
     }
     else if(input == 2){ // ----- heap -----
+      heap->size = 1;
       for (i = 0; i < n; i++){
         insertHeap(heap, i);
       }
