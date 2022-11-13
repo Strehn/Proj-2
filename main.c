@@ -29,8 +29,8 @@ int main(int argc, char *argv[])
     if(input == 1){ // ----- linked list -----
       for (i = 0; i < n; i++){
         struct pq *newNode = pq_create();
-        newNode->value = i;
-        newNode->next = NULL;
+        newNode->num = i;
+        newNode->Next = NULL;
         newNode->Previous = NULL;
         // INSERTION SORT
         sInsert(mypq, newNode);
