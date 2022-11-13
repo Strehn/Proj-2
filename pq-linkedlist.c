@@ -78,7 +78,7 @@ void sInsert(pq* head, pq* newNode){// head = sl, new = current
         head = newNode;
     }
     else if ((head)->num >= newNode->num) { // if the newNode's is first
-        newNode->Next = *head;
+        newNode->Next = head;
         newNode->Next->Previous = newNode;
         head = newNode;
     }
