@@ -58,7 +58,7 @@ void PrintLL(pq *head){
 void InsertionSort(pq *head){
     pq *sl = pq_create();
     pq *current = pq_create();
-    current = *head;
+    current = head;
     pq *next = pq_create();
     // go through list and insert each into a new sorted list
     while (current != NULL) {
@@ -73,16 +73,16 @@ void InsertionSort(pq *head){
 void sInsert(pq* head, pq* newNode){// head = sl, new = current
     pq *current = pq_create();
     // if list null head becomes node to be sorted
-    if (*head == NULL){
-        *head = newNode;
+    if (head == NULL){
+        head = newNode;
     }
     else if ((*head)->num >= newNode->num) { // if the newNode's is first
         newNode->Next = *head;
         newNode->Next->Previous = newNode;
-        *head = newNode;
+        head = newNode;
     }
     else { // find where to insert new node
-        current = *head;
+        current = head;
         while (current->Next != NULL && 
               current->Next->num < newNode->num)
             current = current->Next;
