@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
     printf("%s", "Choose an option, 0 is the base main.c implementation. \n (1) linked list \n (2) heap. \n");
     scanf("&d", &input);
 
-    if(input = 1){ // ----- linked list -----
+    if(input == 1){ // ----- linked list -----
       for (i = 0; i < n; i++){
         struct pq *newNode = pq_create();
         newNode->value = i;
@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
       } 
       PrintLL(mypq); // print the data in the list
     }
-    else if(input = 2){ // ----- heap -----
+    else if(input == 2){ // ----- heap -----
       for (i = 0; i < n; i++){
         insertHeap(heap, i);
       }

@@ -9,6 +9,7 @@
 //min heap
 struct Mheap{
     int *arr; // array to hold the binary tree
+    int size;
 }
 
 /*       root   <- minimum num
@@ -26,6 +27,8 @@ Mheap* heap_create()
 {
   return (Mheap*)malloc(sizeof(Mheap));
 }
+
+typedef struct Mheap Mheap;
 
 int parent(int i){
     return (i-1)/2;
