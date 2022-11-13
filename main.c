@@ -11,9 +11,9 @@ int main(int argc, char *argv[])
   const int n = 1000;
   double *v = malloc(sizeof(double)*n);
   struct pq *mypq;
-  pq_create(mypq);
+  mypq = pq_create();
   struct Mheap *heap;
-  heap_create(heap);
+  heap = heap_create();
   int input = 0; 
 
     /* init */
