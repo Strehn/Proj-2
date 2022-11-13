@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
-#include "pq.h"
+//#include "pq.h"
 
 //min heap
 struct Mheap{
