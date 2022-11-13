@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
     }
     else if(input == 2){ // ----- heap -----
       heap->size = 1;
-      heap->arr = new int[n];
+      heap->arr = malloc( sizeof(int) * 1000);
       for (i = 0; i < n; i++){
         insertHeap(heap, i);
       }
