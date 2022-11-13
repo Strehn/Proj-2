@@ -23,11 +23,11 @@ void pq_push(pq *head, double key, void *value)
 }
 
 /* Returns value from pq having the minimum key */
-void* pq_pop(pq *head)
+double pq_pop(pq *head)
 {
   void *p = head->ptr;
   head->ptr = NULL;
-  return p;
+  return p->num;
 }
 
 /* Deallocates (frees) pq. Shallow destruction,
