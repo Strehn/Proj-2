@@ -23,15 +23,16 @@ parent   = arr[(i-1)/2]
 left c   = arr[(2*i)+1]
 right c  = arr[(2*i)+2]
 */
-Mheap* heap_create()
-{
-  return (Mheap*)malloc(sizeof(Mheap));
-}
 
 typedef struct Mheap Mheap;
 
 int parent(int i){
     return (i-1)/2;
+}
+
+Mheap* heap_create()
+{
+  return (Mheap*)malloc(sizeof(Mheap));
 }
 
 void insertHeap(Mheap *heap, int num){
