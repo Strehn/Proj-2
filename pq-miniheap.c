@@ -1,14 +1,11 @@
-// noah rodgers, sydney petrehn, and james turner
-// code implementing a min-heap
-
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
-//#include "pq.h"
+#include "pq.h"
 
 //min heap
 struct Mheap{
-    int *arr; // array to hold the binary tree
+    double *arr; // array to hold the binary tree
     int size;
 };
 
@@ -35,13 +32,13 @@ Mheap* heap_create()
   return (Mheap*)malloc(sizeof(Mheap));
 }
 
-void swap(int *a, int *b){
-  int temp = *a;
+void swap(double *a, double *b){
+  double temp = *a;
   *a = *b;
   *b = temp;
 }
 
-void insertHeap(Mheap *heap, int num){
+void insertHeap(Mheap *heap, double num){
     int i = heap->size - 1;
     heap->arr[i] = num;
 
@@ -58,4 +55,27 @@ void PrintHeap(Mheap *heap){
   for(i = 0; i < 1000; i++){
     printf("%d ", heap->arr[i]);
   }
+}
+
+int main(int argc, char *argv[])
+{
+  int i = 0;
+  const int n = 1000;
+  double *v = malloc(sizeof(double)*n);
+  struct Mheap *heap;
+  heap = heap_create();
+  heap->size = 1;
+  heap->arr = malloc( sizeof(int) * 1000);
+
+    /* init */
+    srand(time(NULL));
+    for (i = 0; i < n; i++) {
+      v[i] = drand48();
+    }
+    for (i = 0; i < n; i++){
+      insertHeap(heap, v[i]);
+    }
+      // print the data in the heap
+      PrintHeap(heap);
+    return 0;
 }
