@@ -2,8 +2,6 @@
 #include <stdio.h>
 #include <time.h>
 #include "pq.h"
-#include "pq-linkedlist.c"
-#include "pq-miniheap.c"
 
 int main(int argc, char *argv[])
 {
@@ -12,9 +10,6 @@ int main(int argc, char *argv[])
   double *v = malloc(sizeof(double)*n);
   struct pq *mypq;
   mypq = pq_create();
-  struct Mheap *heap;
-  heap = heap_create();
-  int input = 0; 
 
     /* init */
     srand(time(NULL));
@@ -22,33 +17,9 @@ int main(int argc, char *argv[])
     for (i = 0; i < n; i++) {
       v[i] = drand48();
     }
-
-    printf("%s", "Choose an option, 0 is the base main.c implementation. \n (1) linked list \n (2) heap. \n");
-    scanf("%d", &input);
-
-    if(input == 1){ // ----- linked list -----
-      for (i = 0; i < n; i++){
-        struct pq *newNode = pq_create();
-        newNode->num = i;
-        newNode->Next = NULL;
-        newNode->Previous = NULL;
-        // INSERTION SORT
-        sInsert(mypq, newNode);
-      } 
-      PrintLL(mypq); // print the data in the list
-    }
-    else if(input == 2){ // ----- heap -----
-      heap->size = 1;
-      heap->arr = malloc( sizeof(int) * 1000);
-      for (i = 0; i < n; i++){
-        insertHeap(heap, i);
-      }
-      // print the data in the heap
-      PrintHeap(heap);
-    }
-    else{ //base /  ----- given main.c sort -----
+//base /  ----- given main.c sort -----
       /* begin sort */
-      /*
+      
       for (i = 0; i < n; i++){
         pq_push(mypq, v[i], v[i]);
       } 
@@ -61,6 +32,6 @@ int main(int argc, char *argv[])
       free(v);
       /* end sort */
       
-    }
+    
     return 0;
 }
