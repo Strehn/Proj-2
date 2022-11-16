@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include <time.h>
 #include "pq.h"
-#include "pq-linkedlist.c"
 
 /* Allocates and initializes a new pq */
 pq* pq_create()
