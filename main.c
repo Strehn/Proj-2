@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
       /* begin sort */
       
       for (i = 0; i < n; i++){
-        pq_push(mypq, v[i], v[i]);
+        pq_push(mypq, v[i], (void*)v[i]); //gave error in compilation so added (void*) to match argument from push_pq in header file
       } 
       for (i = 0; i < n; i++){
         v[i] = pq_pop(mypq);
