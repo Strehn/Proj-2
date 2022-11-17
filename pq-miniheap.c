@@ -67,9 +67,15 @@ int main(int argc, char *argv[])
   heap->size = 1;
   heap->arr = malloc( sizeof(int) * 1000);
 
+
+// insert here to time the sort
     for (i = 0; i < n; i++){
       insertHeap(heap, i);
     }
+
+    // insert here for the end of the sort
+
+
       // print the data in the heap
       PrintHeap(heap);
     return 0;

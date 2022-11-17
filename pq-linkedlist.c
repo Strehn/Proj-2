@@ -62,10 +62,11 @@ int main(int argc, char *argv[])
 {
   int i = 0;
   const int n = 1000;
-  double *v = malloc(sizeof(double)*n);
+  int *v = malloc(sizeof(int)*n);
   struct pq *mypq;
   mypq = pq_create();
 
+    // insert here to time the function
     for (i = 0; i < n; i++){
       struct pq *newNode = pq_create();
       newNode->num = i;
@@ -73,6 +74,8 @@ int main(int argc, char *argv[])
       newNode->Previous = NULL;        // INSERTION SORT
       sInsert(mypq, newNode);
     } 
+
+    // insert here the end of the timing
     
     PrintLL(mypq); // print the data in the list
 
