@@ -5,7 +5,7 @@
 
 //min heap
 struct Mheap{
-    double *arr; // array to hold the binary tree
+    int *arr; // array to hold the binary tree
     int size;
 };
 
@@ -32,13 +32,13 @@ Mheap* heap_create()
   return (Mheap*)malloc(sizeof(Mheap));
 }
 
-void swap(double *a, double *b){
-  double temp = *a;
+void swap(int *a, int *b){
+  int temp = *a;
   *a = *b;
   *b = temp;
 }
 
-void insertHeap(Mheap *heap, double num){
+void insertHeap(Mheap *heap, int num){
     int i = heap->size - 1;
     heap->arr[i] = num;
 
@@ -67,13 +67,8 @@ int main(int argc, char *argv[])
   heap->size = 1;
   heap->arr = malloc( sizeof(int) * 1000);
 
-    /* init */
-    srand(time(NULL));
-    for (i = 0; i < n; i++) {
-      v[i] = drand48();
-    }
     for (i = 0; i < n; i++){
-      insertHeap(heap, v[i]);
+      insertHeap(heap, i);
     }
       // print the data in the heap
       PrintHeap(heap);

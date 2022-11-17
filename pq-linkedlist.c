@@ -65,15 +65,10 @@ int main(int argc, char *argv[])
   double *v = malloc(sizeof(double)*n);
   struct pq *mypq;
   mypq = pq_create();
-    /* init */
-    srand(time(NULL));
-    for (i = 0; i < n; i++) {
-      v[i] = drand48();
-    }
 
     for (i = 0; i < n; i++){
       struct pq *newNode = pq_create();
-      newNode->num = v[i];
+      newNode->num = i;
       newNode->Next = NULL;
       newNode->Previous = NULL;        // INSERTION SORT
       sInsert(mypq, newNode);
